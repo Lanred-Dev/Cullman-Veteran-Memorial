@@ -1,0 +1,182 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans Medium"),
+        local("FunnelSans-Medium"),
+        url("fonts/FunnelSans/FunnelSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans SemiBold"),
+        local("FunnelSans-SemiBold"),
+        url("fonts/FunnelSans/FunnelSans-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans ExtraBold Italic"),
+        local("FunnelSans-ExtraBoldItalic"),
+        url("fonts/FunnelSans/FunnelSans-ExtraBoldItalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans Medium Italic"),
+        local("FunnelSans-MediumItalic"),
+        url("fonts/FunnelSans/FunnelSans-MediumItalic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans Bold"),
+        local("FunnelSans-Bold"),
+        url("fonts/FunnelSans/FunnelSans-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans Light"),
+        local("FunnelSans-Light"),
+        url("fonts/FunnelSans/FunnelSans-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans SemiBold Italic"),
+        local("FunnelSans-SemiBoldItalic"),
+        url("fonts/FunnelSans/FunnelSans-SemiBoldItalic.ttf") format("truetype");
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans Italic"),
+        local("FunnelSans-Italic"),
+        url("fonts/FunnelSans/FunnelSans-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans Bold Italic"),
+        local("FunnelSans-BoldItalic"),
+        url("fonts/FunnelSans/FunnelSans-BoldItalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans Regular"),
+        local("FunnelSans-Regular"),
+        url("fonts/FunnelSans/FunnelSans-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans ExtraBold"),
+        local("FunnelSans-ExtraBold"),
+        url("fonts/FunnelSans/FunnelSans-ExtraBold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Sans";
+    src:
+        local("Funnel Sans Light Italic"),
+        local("FunnelSans-LightItalic"),
+        url("fonts/FunnelSans/FunnelSans-LightItalic.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@layer base {
+    body {
+        @apply bg-primary-light dark:bg-primary-dark text-primary-light dark:text-primary-dark font-FunnelSans;
+    }
+}
+
+@layer utilities {
+    .cover-screen {
+        @apply h-screen w-full;
+    }
+
+    .x-center,
+    .y-center {
+        @apply absolute;
+    }
+
+    .x-center {
+        @apply left-1/2 -translate-x-1/2;
+    }
+
+    .y-center {
+        @apply top-1/2 -translate-y-1/2;
+    }
+
+    .flex-center {
+        @apply flex items-center justify-center;
+    }
+
+    .aspect-square {
+        aspect-ratio: 1 / 1;
+    }
+}
+
+@layer components {
+    button.primary,
+    a.primary,
+    button.secondary,
+    a.secondary {
+        @apply px-6 py-3 font-semibold;
+    }
+
+    button.primary,
+    a.primary {
+        @apply rounded-button;
+    }
+}
