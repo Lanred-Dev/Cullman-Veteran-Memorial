@@ -136,11 +136,15 @@
 
 @layer base {
     body {
-        @apply bg-primary-light dark:bg-primary-dark text-primary-light dark:text-primary-dark font-FunnelSans;
+        @apply overflow-x-hidden bg-primary-light font-FunnelSans text-primary-light dark:bg-primary-dark dark:text-primary-dark;
     }
 }
 
 @layer utilities {
+    .border-light {
+        @apply border-primary-light-500 dark:border-primary-dark-400;
+    }
+
     .cover-screen {
         @apply h-screen w-full;
     }
@@ -165,6 +169,14 @@
     .aspect-square {
         aspect-ratio: 1 / 1;
     }
+
+    .text-light {
+        @apply text-primary-light-400 dark:text-primary-dark-300;
+    }
+
+    .text-dark {
+        @apply text-primary-light-800 dark:text-primary-dark-700;
+    }
 }
 
 @layer components {
@@ -172,11 +184,30 @@
     a.primary,
     button.secondary,
     a.secondary {
-        @apply px-6 py-3 font-semibold;
+        @apply px-6 py-3;
     }
 
     button.primary,
     a.primary {
-        @apply rounded-button;
+        @apply border-light rounded-button bg-button-dark-primary text-primary-dark;
+    }
+
+    input.primary,
+    textarea.primary,
+    select.primary {
+        @apply focus:ring-dark border-light rounded-button bg-primary-light-800 text-primary-light placeholder:text-primary-light-800 focus:border-transparent focus:outline-none focus:ring-1 dark:bg-primary-dark-700 dark:text-primary-dark-300 dark:placeholder:text-primary-dark-700;
+    }
+
+    .divider-x,
+    .divider-y {
+        @apply bg-divider-light dark:bg-divider-dark;
+    }
+
+    .divider-x {
+        height: 2px;
+    }
+
+    .divider-y {
+        width: 2px;
     }
 }
