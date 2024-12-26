@@ -1,11 +1,20 @@
-<!--Create a form that allows for input props and dynamic fields and title provided by the user of the component.-->
 <script lang="ts">
-    import { enhance } from "$app/forms";
     import type { Snippet } from "svelte";
+    import { twMerge } from "tailwind-merge";
 
-    let { classes, children }: { classes?: string; children: Snippet<[]> } = $props();
+    let {
+        action,
+        method = "GET",
+        classes,
+        children,
+    }: {
+        action: string;
+        method?: "POST" | "GET";
+        classes?: string;
+        children: Snippet<[]>;
+    } = $props();
 </script>
 
-<form class="flex-center flex-col gap-5 {classes}" method="POST" use:enhance>
+<form class={twMerge("flex-center flex-col gap-5", classes)} {method} {action}>
     {@render children?.()}
 </form>

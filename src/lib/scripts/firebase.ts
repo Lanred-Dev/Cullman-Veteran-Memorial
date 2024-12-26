@@ -8,7 +8,7 @@ import {
     STORAGE_BUCKET,
     MESSAGING_SENDER_ID,
     APP_ID,
-    MESAUREMENT_ID,
+    MEASUREMENT_ID,
 } from "$env/static/private";
 
 const app: FirebaseApp = initializeApp({
@@ -18,7 +18,7 @@ const app: FirebaseApp = initializeApp({
     storageBucket: STORAGE_BUCKET,
     messagingSenderId: MESSAGING_SENDER_ID,
     appId: APP_ID,
-    measurementId: MESAUREMENT_ID,
+    measurementId: MEASUREMENT_ID,
 });
 
 export const firebase: Firestore = getFirestore(app);

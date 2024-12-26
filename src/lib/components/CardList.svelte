@@ -1,18 +1,42 @@
 <script lang="ts">
+    import CardGroup from "./CardGroup.svelte";
     import type { Veteran } from "$lib/types";
+    import { onMount } from "svelte";
 
-    let { entries, max }: { entries: Veteran[]; max?: number } = $props();
-    let visibleEntries: Veteran[] = $derived(entries.slice(0, max || entries.length));
+    let containerWidth: number = $state(0);
+    let { entries, maxGroups }: { entries: Veteran[]; maxGroups?: number } = $props();
+    let cardSize: number = $state(0);
+    let visibleGroups: Veteran[][] = $derived.by(() => {
+        let totalGroups: number = 0;
+
+        return [[]];
+    });
+
+    /**
+     * Determine the card size based on the window width.
+     *
+     * @returns never
+     */
+    function determineCardSize() {
+        // Card size is 40px on desktop and 80px on mobile.
+        cardSize = window.innerWidth >= 512 ? 40 : 80;
+    }
+
+    onMount(() => {
+        determineCardSize();
+        window.addEventListener("resize", determineCardSize);
+
+        return () => {
+            window.removeEventListener("resize", determineCardSize);
+        };
+    });
 </script>
 
-{#snippet card({ name, images }: Veteran)}
-    <div class="aspect-square w-32 bg-primary-light-400 dark:bg-primary-dark-400 md:w-40">
-        <img src={images[0]} alt="{name}'s cover" class="h-full w-full object-cover" />
-    </div>
-{/snippet}
-
-<div class="flex-center w-full flex-wrap gap-5 overflow-x-hidden md:px-[10%]">
-    {#each visibleEntries as entry}
-        {@render card(entry)}
+<div
+    class="flex-center w-full gap-5 overflow-x-hidden md:px-[10%]"
+    bind:clientWidth={containerWidth}
+>
+    {#each visibleGroups as group}
+        <CardGroup entries={group} {cardSize} />
     {/each}
 </div>

@@ -7,5 +7,5 @@
 </script>
 
 <Section id="wall">
-    <CardList max={20} {entries} />
+    <CardList maxGroups={1} {entries} />
 </Section>

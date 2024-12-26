@@ -1,6 +1,7 @@
 export type theme = "light" | "dark";
 
-let theme: theme;
+let setStartingTheme: boolean = false;
+let theme: theme = "dark";
 
 /**
  * Returns the stored theme.
@@ -9,13 +10,15 @@ let theme: theme;
  */
 export function getTheme(): theme {
     // Get the stored color theme if the theme has not been fetched yet.
-    if (typeof theme !== "string") {
+    if (!setStartingTheme) {
         // If no color theme has been saved in storage then use the system default otherwise use the one saved in storage.
         if (!("theme" in localStorage)) {
             setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
         } else {
             theme = (localStorage.getItem("theme") as theme) || "dark";
         }
+
+        setStartingTheme = true;
     }
 
     return theme;
@@ -23,7 +26,7 @@ export function getTheme(): theme {
 
 /**
  * Sets a new theme.
- * 
+ *
  * @param newTheme - The new theme. Must be either 'light' or 'dark'.
  * @returns never
  *

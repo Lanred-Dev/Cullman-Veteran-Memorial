@@ -13,6 +13,7 @@ export async function load({ fetch, url }) {
 
     // Fetch the veterans based on the queries.
     const veterans = await fetch("/api/veterans", {
+        method: "POST",
         body: JSON.stringify(queryOptions),
     });
 

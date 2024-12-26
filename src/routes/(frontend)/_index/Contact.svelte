@@ -9,12 +9,10 @@
 <Section
     id="contact"
     title="Reach out to us"
-    text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, optio ducimus! Sapiente
-            veniam fugit, vel quibusdam voluptatum debitis iste necessitatibus voluptatibus corrupti
-            praesentium consequatur aperiam quos, vitae illum rerum qui?"
+    text="Reach out to us with your questions, comments, suggestions, or concerns. We'll get back to you as soon as we can."
     height="50vh"
 >
-    <Form classes="w-full md:w-1/2">
+    <Form action="/api/contact" method="POST" classes="w-full md:w-1/2">
         <FormRow>
             <FormInput id="name" label="Name" type="text" placeholder="John Doe" />
             <FormInput id="email" label="Email" type="email" placeholder="johndoe@gmail.com" />

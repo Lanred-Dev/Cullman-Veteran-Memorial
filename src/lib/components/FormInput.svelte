@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { twMerge } from "tailwind-merge";
+
     let {
         id,
         label,
@@ -9,7 +11,7 @@
         options = [],
     }: {
         id: string;
-        label: string;
+        label?: string;
         type:
             | "text"
             | "file"
@@ -27,21 +29,24 @@
         options?: string[];
     } = $props();
 
-    const inputClasses: string = `primary peer w-full text-lg ${classes}`;
+    const inputClasses: string = twMerge("primary peer w-full text-lg", classes);
 </script>
 
 <div class="w-full space-y-1">
-    <label class="text-light cursor-text select-none pl-3" for={id}>{label}</label>
+    {#if label}
+        <label class="text-light cursor-text select-none pl-3" for={id}>{label}</label>
+    {/if}
 
     {#if type === "select"}
-        <select class={inputClasses} {id}>
+        <select class={inputClasses} name={id} {id}>
             {#each options as option}
                 <option value={option}>{option}</option>
             {/each}
         </select>
     {:else if type === "textarea"}
-        <textarea class="resize-none {inputClasses}" {id} {placeholder} {value}></textarea>
+        <textarea class="resize-none {inputClasses}" name={id} {id} {placeholder} {value}
+        ></textarea>
     {:else}
-        <input class={inputClasses} {id} {type} {placeholder} {value} />
+        <input class={inputClasses} name={id} {id} {type} {placeholder} {value} />
     {/if}
 </div>
