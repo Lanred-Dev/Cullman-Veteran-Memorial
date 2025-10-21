@@ -8,5 +8,7 @@
 </script>
 
 <Hero />
+
 <InfiniteWall entries={data.veterans} />
+
 <Contact />
